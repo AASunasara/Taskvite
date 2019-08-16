@@ -1,0 +1,35 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<html>
+<head>
+
+    <title>Sign Up!</title>
+    <link href="{% static 'css/register.css' %}" type="text/css" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="title">
+    <h4>sign up form for the To-Do List App!</h4>
+</div>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Sign Up!</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div>
+            <center><button type="submit">Sign up</></button></center>
+        </div>
+    </form>
+    <div>
+        <small>
+            Already have an account?<a href="{% url 'login' %}">sign in</a>
+        </small>
+    </div>
+</div>
+
+</body>
+</html>

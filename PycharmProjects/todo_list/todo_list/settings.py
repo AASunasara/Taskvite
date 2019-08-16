@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 STATICFILES_DIRS = [
     "/PycharmProjects/todo_list/todo_app/static",
+    "/PycharmProjects/todo_list/login_pg/static",
 ]
 
 
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo_app.apps.TodoListConfig',
+    'crispy_forms',
+
 
 ]
 
@@ -124,3 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+
+
