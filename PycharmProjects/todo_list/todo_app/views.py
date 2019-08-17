@@ -14,13 +14,15 @@ def home(request):
         form = ListForm(request.POST or None)
 
         if form.is_valid():
-            form.save()
-            all_items = List.objects.all
+            instance = form.save(commit=False)
+            instance.user_id = request.user
+            instance.save()
+            all_items = List.objects.filter(user_id=request.user)
             messages.success(request, 'Item just has been added! ;)', extra_tags='items')
             return render(request, 'home.html', {'all_items': all_items})
 
     else:
-        all_items = List.objects.all
+        all_items = List.objects.filter(user_id=request.user)
         return render(request, 'home.html', {'all_items': all_items})
 
 
@@ -57,6 +59,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+@login_required(login_url='login')
 def logout_view(request):
     logout(request)
     messages.success(request, 'You have been just logged out!', extra_tags='logout')
