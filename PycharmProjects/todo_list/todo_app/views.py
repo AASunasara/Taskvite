@@ -56,7 +56,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'register.html', {'form': form})
+        return render(request, 'register.html', {'form': form})
 
 
 @login_required(login_url='login')
@@ -79,6 +79,6 @@ def change_password(request):
 
     else:
         form = PasswordChangeForm(user=request.user)
-    return render(request, 'change_password.html', {'form': form})
+        return render(request, 'change_password.html', {'form': form})
 
 

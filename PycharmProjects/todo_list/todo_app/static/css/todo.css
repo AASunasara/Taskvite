@@ -1,4 +1,3 @@
-
 body{
 
     margin:0;
@@ -202,11 +201,8 @@ body {
 }
 
 .counter {
-
   font-size: 25px;
   color: black;
-  position: relative;
-  left : 400px;
 
  }
 
@@ -220,8 +216,9 @@ body {
   border-radius: 15px;
   background: #DCDCDC;
   padding: 7px;
+  margin-top: 50px;
   font-size: 18px;
-  width: 30%;
+  width: 400px;
   font-family: sans-serif;
   position: relative;
   bottom: 7px;
@@ -229,12 +226,14 @@ body {
 }
 table, td, th {
   border: 1px solid #DCDCDC;
+
 }
 
-table {
 
+table {
+  position: relative;
+  left : 400px;
   border-collapse: collapse;
-  width: 50%;
   font-size: 20px;
   line-height:2;
 }
@@ -245,6 +244,8 @@ table {
 }
 .striker{
 text-decoration: line-through;
+    width :500px;
+
 }
 
 .nav {
@@ -254,4 +255,31 @@ text-decoration: line-through;
 .nav-item{
     height : 20px;
     padding : 10px ;
+}
+
+.norm{
+    width :500px;
+}
+
+.status{
+    width : 120px;
+}
+
+.cross{
+    width:60px;
+}
+
+.onclick {
+
+
+    color:#007bff;
+    text-decoration:none;
+    background-color:transparent
+}
+.container {
+
+    position: relative;
+    left : 0;
+    width: 700px;
+
 }
