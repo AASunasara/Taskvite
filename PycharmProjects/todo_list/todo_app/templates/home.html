@@ -1,0 +1,81 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <title>To-Do List</title><link href="{% static 'css/todo.css' %}" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <div>
+    <nav class="nav">
+        <a class="nav-item" href="{% url 'home' %}">Home</a>
+        <a class="nav-item" href="{% url 'logout' %}">Logout</a>
+        <a class="nav-item" href="{% url 'change_password' %}">Change Password</a>
+        </nav>
+    </div>
+
+    {% for message in messages %}
+     {% if "password" in message.tags %}
+     <div role="alert" class="psd-msg">
+         <li>{{ message }}</li>
+     </div>
+     {% endif %}
+     {% endfor %}
+
+</header>
+
+
+  <div class="todo-wrapper">
+    <div class="todo">
+      <div class="todo-logo">To-Do List</div>
+      <form method="post">
+      <button class="add-btn" type="submit">Add to List</button>
+      <div class="todo-task">
+        {% csrf_token %}
+        <input class="todo-task-input" type="search" placeholder="What needs to be done?" name="item">
+      </div>
+      </form>
+    </div>
+
+     {% for message in messages %}
+     {% if "items" in message.tags %}
+     <div role="alert" class="msg">
+         {{ message }}
+     </div>
+     {% endif %}
+     {% endfor %}
+      <br>
+
+      <table class="container">
+
+          {% if all_items %}
+              {% for things in all_items %}
+
+                {% if things.completed %}
+            <tr class="table-secondary">
+                <td class="striker">{{ things.item }}</td>
+                <td class="status"><center><a href="{% url 'uncross' things.id %}">Done</a></center></td>
+                <td class="cross"><center><a href="{% url 'delete' things.id %}">x</a></center></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td class="norm">{{ things.item }}</td>
+                <td class="status"><center><a href="{% url 'cross_off' things.id %}">Pending</a></center></td>
+                <td class="cross"><center><a href="{% url 'delete' things.id %}">x</a></center></td>
+            </tr>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+      </table>
+  </div>
+
+
+
+
+
+</body>
+</html>
