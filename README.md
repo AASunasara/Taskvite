@@ -1,4 +1,4 @@
-# To-Do-list-app
+# Taskvite
 
 my first Django web-app
 to-do list:
